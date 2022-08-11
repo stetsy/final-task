@@ -43,3 +43,9 @@ jobs:
         
       run: terraform apply -auto-approve -input=false 
       
+    - name: Kubernetes setup
+      run: |
+         chmod +x ./kube.sh
+         ./kube.sh
+      shell: bash
+      
