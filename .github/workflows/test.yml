@@ -19,7 +19,7 @@ jobs:
     - name: Kubernetes setup
       run: |
          ls -la
-         chmod +x kube.sh
-         kube.sh
+         chmod +x ./kube.sh
+         ./kube.sh
       shell: bash
      
