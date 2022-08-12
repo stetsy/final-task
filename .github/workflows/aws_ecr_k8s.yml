@@ -50,8 +50,8 @@ jobs:
           docker tag yura/devops4:latest public.ecr.aws/n3q6n4k8/yura/devops4:latest
           docker push public.ecr.aws/n3q6n4k8/yura/devops4:latest
           
-     #- name: Generate pod deploy yaml
+     - name: Generate pod deploy yaml
       
-       #run: | 
-        #   kubectl aplly -f deployment.yml
-         #  kubectl aplly -f service.yml
+       run: | 
+           kubectl aplly -f deployment.yml
+           kubectl aplly -f service.yml
