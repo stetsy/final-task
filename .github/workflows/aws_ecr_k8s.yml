@@ -53,5 +53,5 @@ jobs:
      - name: Generate pod deploy yaml
       
        run: | 
-           kubectl aplly -f deployment.yml
-           kubectl aplly -f service.yml
+           kubectl apply -f deployment.yml
+           kubectl apply -f service.yml
