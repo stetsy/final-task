@@ -31,7 +31,7 @@ jobs:
          ECR_REPOSITORY: yura/devops4
          
        with:
-         args: apply -f https://github.com/stetsy/final-task/blob/dev/application/deployment.yml && kubectl apply -f https://github.com/stetsy/final-task/blob/dev/application/service.yml
+         args: apply -f https://github.com/stetsy/final-task/blob/dev/application/deployment.yml
      
 
      - name: Login to AWS ECR
