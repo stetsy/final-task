@@ -41,7 +41,13 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         
         
-      run: terraform apply -auto-approve -input=false 
+      run: terraform apply -auto-approve -input=false
+    - name: Kubernetes setup
+      run: |
+         ls -la
+         chmod +x kube.sh
+         ./kube.sh
+      shell: bash
       
     
       
