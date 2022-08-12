@@ -17,11 +17,14 @@ jobs:
      
     
      - name: Configure AWS credentials
-       uses: aws-actions/configure-aws-credentials@v1
-       with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION_ID }}
+       env:
+          AWS_REGION: ${{ secrets.AWS_REGION_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+       run: |
+             aws eks --region $AWS_REGION update-kubeconfig --name FT-cluster-devops4
+             kubectl apply -f ./deployment.yml && kubectl apply -f ./service.yml
+             
           
      - name: deploy to cluster
        uses: kodermax/kubectl-aws-eks@master
