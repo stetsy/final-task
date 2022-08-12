@@ -74,4 +74,4 @@ jobs:
          ECR_REPOSITORY: yura/devops4
          
        with:
-         args: set image deployment/devops4-app public.ecr.aws/n3q6n4k8/yura/devops4:latest
+         args: set image deployment devops4-app public.ecr.aws/n3q6n4k8/yura/devops4:latest
