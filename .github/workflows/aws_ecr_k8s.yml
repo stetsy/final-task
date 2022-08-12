@@ -22,6 +22,17 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION_ID }}
+          
+     - name: deploy to cluster
+       uses: kodermax/kubectl-aws-eks@master
+       env:
+         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+         ECR_REGISTRY: public.ecr.aws/n3q6n4k8/yura/devops4
+         ECR_REPOSITORY: yura/devops4
+         
+       with:
+         args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY
+     
 
      - name: Login to AWS ECR
        id: loginECR
