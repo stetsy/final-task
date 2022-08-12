@@ -70,7 +70,7 @@ jobs:
        uses: kodermax/kubectl-aws-eks@master
        env:
          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-         ECR_REGISTRY: public.ecr.aws/n3q6n4k8/yura/devops4
+         ECR_REGISTRY: public.ecr.aws/n3q6n4k8
          ECR_REPOSITORY: yura/devops4
          
        with:
