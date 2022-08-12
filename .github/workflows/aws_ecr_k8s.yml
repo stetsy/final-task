@@ -31,7 +31,7 @@ jobs:
          ECR_REPOSITORY: yura/devops4
          
        with:
-         args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY
+         args: apply -f deployment.yml && kubectl apply -f service.yml
      
 
      - name: Login to AWS ECR
@@ -61,9 +61,12 @@ jobs:
           docker tag yura/devops4:latest public.ecr.aws/n3q6n4k8/yura/devops4:latest
           docker push public.ecr.aws/n3q6n4k8/yura/devops4:latest
           
-     - name: Generate pod deploy yaml
-      
-       run: | 
-           ls -la
-           kubectl apply -f deployment.yml
-           kubectl apply -f service.yml
+     - name: update image to cluster
+       uses: kodermax/kubectl-aws-eks@master
+       env:
+         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+         ECR_REGISTRY: public.ecr.aws/n3q6n4k8/yura/devops4
+         ECR_REPOSITORY: yura/devops4
+         
+       with:
+         args: set image deployment/devops4-app public.ecr.aws/n3q6n4k8/yura/devops4:latest
