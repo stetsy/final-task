@@ -18,7 +18,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION_ID }}
     - name: Kubernetes setup
       run: |
-         chmod +x ./kube.sh
-         ./kube.sh
+         ls -la
+         chmod +x kube.sh
+         kube.sh
       shell: bash
      
